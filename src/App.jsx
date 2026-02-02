@@ -78,8 +78,7 @@ function App() {
           <option>Shopping</option>
           <option>Bills</option>
           <option>Medical</option>
-          <option>Seeds</option>
-          <option>Fertilizer</option>
+          <option>Rent</option>
           <option>Other</option>
         </select>
     <br />
