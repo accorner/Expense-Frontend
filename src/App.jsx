@@ -93,7 +93,7 @@ function App() {
       <WeeklyExpenseChart expenses={expenses} />
       <MonthlyExpenseChart expenses={expenses} />
       <ViewAllExpenses/>
-      
+      <a href="https://expense-backend-eg90.onrender.com/"> Run Application</a>
     </div>
   );
 }
