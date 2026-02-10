@@ -7,7 +7,25 @@
     <title>expense-app</title>
   </head>
   <body>
+
     <div id="root"></div>
+
+    <script>
+      // runs when page loads
+      window.onload = function () {
+        const validUsername = "narayanrghanwat";
+        const validPasskey = "Akanksha_Narayan";
+
+        let username = prompt("Enter username:");
+        let passkey = prompt("Enter passkey:");
+
+        if (username !== validUsername || passkey !== validPasskey) {
+          alert("Invalid credentials. Access denied!");
+          document.body.innerHTML = "<h2>Access Denied</h2>";
+        }
+      };
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
