@@ -5,25 +5,60 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>expense-app</title>
+
+    <style>
+      #loginBox {
+        position: fixed;
+        inset: 0;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .box {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      input {
+        display: block;
+        margin: 10px auto;
+        padding: 8px;
+        width: 200px;
+      }
+    </style>
   </head>
+
   <body>
+    <!-- Login Overlay -->
+    <div id="loginBox">
+      <div class="box">
+        <h3>Login</h3>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="passkey" placeholder="Passkey" />
+        <button onclick="validateLogin()">Login</button>
+        <p id="error" style="color:red;"></p>
+      </div>
+    </div>
 
     <div id="root"></div>
 
     <script>
-      // runs when page loads
-      window.onload = function () {
-        const validUsername = "narayanrghanwat";
-        const validPasskey = "Akanksha_Narayan";
+      function validateLogin() {
+        const validUsername = "admin";
+        const validPasskey = "1234";
 
-        let username = prompt("Enter username:");
-        let passkey = prompt("Enter passkey:");
+        const username = document.getElementById("username").value;
+        const passkey = document.getElementById("passkey").value;
 
-        if (username !== validUsername || passkey !== validPasskey) {
-          alert("Invalid credentials. Access denied!");
-          document.body.innerHTML = "<h2>Access Denied</h2>";
+        if (username === validUsername && passkey === validPasskey) {
+          document.getElementById("loginBox").style.display = "none";
+        } else {
+          document.getElementById("error").innerText =
+            "Invalid username or passkey";
         }
-      };
+      }
     </script>
 
     <script type="module" src="/src/main.jsx"></script>
