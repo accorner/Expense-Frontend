@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>expense-app</title>
 
@@ -10,34 +9,33 @@
     #loginBox {
       position: fixed;
       inset: 0;
-      background: #f5f5f5;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
+      z-index: 999999; /* higher than React */
     }
     .box {
-      background: white;
-      padding: 20px;
+      padding: 25px;
+      border: 1px solid #ccc;
       border-radius: 8px;
       text-align: center;
     }
     input, button {
-      display: block;
-      margin: 10px auto;
+      width: 220px;
       padding: 8px;
-      width: 200px;
+      margin: 8px 0;
     }
   </style>
 </head>
 
 <body>
-  <!-- Login Screen -->
+  <!-- LOGIN OVERLAY -->
   <div id="loginBox">
     <div class="box">
       <h3>Login</h3>
-      <input type="text" id="username" placeholder="Username">
-      <input type="password" id="passkey" placeholder="Passkey">
+      <input id="username" placeholder="Username">
+      <input id="passkey" type="password" placeholder="Passkey">
       <button onclick="login()">Login</button>
       <p id="error" style="color:red"></p>
     </div>
@@ -45,21 +43,18 @@
 
   <div id="root"></div>
 
+  <!-- React loads normally -->
+  <script type="module" src="/src/main.jsx"></script>
+
   <script>
     function login() {
       if (
-        document.getElementById("username").value === "narayanrghanwat" &&
-        document.getElementById("passkey").value === "Akanksha_Narayan"
+        username.value === "narayanrghanwat" &&
+        passkey.value === "Akanksha_Narayan"
       ) {
-        document.getElementById("loginBox").remove();
-
-        // 🔥 Load React ONLY after login
-        const script = document.createElement("script");
-        script.type = "module";
-        script.src = "/src/main.jsx";
-        document.body.appendChild(script);
+        document.getElementById("loginBox").style.display = "none";
       } else {
-        document.getElementById("error").innerText = "Invalid credentials";
+        error.innerText = "Invalid credentials";
       }
     }
   </script>
